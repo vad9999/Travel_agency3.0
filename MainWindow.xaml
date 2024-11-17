@@ -1,0 +1,14 @@
+﻿<Window x:Name="MainWindow1" x:Class="Travel_agency.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="850" Loaded="MainWindow_Loaded">
+    <Grid x:Name="Grid1">
+        <TextBox x:Name="EmailBox" Canvas.Left="300" TextWrapping="Wrap" Text="Введите эл. почту" Canvas.Top="126" Width="200" Height="35" FontSize="20" MaxLength="20" MaxLines="1" HorizontalAlignment="Left" VerticalAlignment="Top" GotFocus="EmailBox_GotFocus" LostFocus="EmailBox_LostFocus" Margin="318,202,0,0"/>
+        <TextBox x:Name="PasswordBox" Canvas.Left="300" TextWrapping="Wrap" Text="Введите пароль" Canvas.Top="178" Width="200" Height="35" FontSize="20" MaxLength="13" MaxLines="1" HorizontalAlignment="Left" VerticalAlignment="Top" LostFocus="PasswordBox_LostFocus" GotFocus="PasswordBox_GotFocus" Margin="318,242,0,0"/>
+        <Button x:Name="SignUpButton" Content="Регистрация" Canvas.Left="635" Canvas.Top="10" Canvas.Right="20" Height="60" FontSize="20" VerticalAlignment="Top" Click="SignUpButton_Click" Margin="662,10,0,0" HorizontalAlignment="Left" Width="155"/>
+        <Button x:Name="LogInButton" Content="Войти" Canvas.Left="635" Canvas.Top="364" Canvas.Right="20" FontSize="20" Click="LogInButton_Click" Margin="662,391,0,0" HorizontalAlignment="Left" Width="155" Height="60" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

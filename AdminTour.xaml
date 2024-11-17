@@ -1,0 +1,41 @@
+﻿<Window x:Class="Travel_agency.AdminTour"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Travel_agency"
+        mc:Ignorable="d"
+        Title="AdminTour" Height="499" Width="824">
+    <Grid>
+        <ListView x:Name="TourHotelListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,45,0,0" Height="360" VerticalAlignment="Top" HorizontalAlignment="Center" Width="804">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Тип" Width="50" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Фотография" Width="110">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ImageSource}" Width="100" Height="100" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country}" />
+                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Описание" Width="187" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Описание" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="PreviousButtonn" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="PreviousButtonn_Click"/>
+        <Button x:Name="NextButton" Content="Следующая страница" HorizontalAlignment="Left" Margin="536,410,0,0" Width="150" Click="NextButton_Click" Height="40" VerticalAlignment="Top"/>
+        <Button x:Name="AddHotelButton" Content="Добавить отель" HorizontalAlignment="Left" Margin="535,5,0,0" VerticalAlignment="Top" Height="35" Width="109" Click="AddHotelButton_Click"/>
+        <Button x:Name="DeleteTourButton" Content="Удалить" HorizontalAlignment="Left" Margin="355,5,0,0" VerticalAlignment="Top" Width="85" Height="35" Click="DeleteTourButton_Click"/>
+        <Button x:Name="AddTourButton" Content="Добавить тур" HorizontalAlignment="Left" Margin="445,5,0,0" VerticalAlignment="Top" Width="85" Height="35" Click="AddTourButton_Click"/>
+        <Button x:Name="EditTourButton" Content="Изменить" HorizontalAlignment="Left" Margin="275,5,0,0" VerticalAlignment="Top" Height="35" Width="75" Click="EditTourButton_Click"/>
+        <Button x:Name="AllUsersButton" Content="Список пользователей" HorizontalAlignment="Left" Margin="120,5,0,0" VerticalAlignment="Top" Height="35" Width="150" Click="AllUsersButton_Click"/>
+        <Button x:Name="ReservationListButton" Content="Список броней" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="35" Width="105" Click="ReservationListButton_Click"/>
+        <Button x:Name="ZipButton" Content="Архивировать" Margin="248,415,0,0" VerticalAlignment="Top" Click="ZipButton_Click" Height="35" HorizontalAlignment="Left" Width="100"/>
+        <Button x:Name="ArchiveButton" Content="Список архива" HorizontalAlignment="Center" Margin="0,415,0,0" VerticalAlignment="Top" Click="ArchiveButton_Click" Height="35" Width="100"/>
+    </Grid>
+</Window>
+    

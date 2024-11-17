@@ -1,0 +1,17 @@
+﻿<Window x:Class="Travel_agency.UserCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Travel_agency"
+        mc:Ignorable="d"
+        Title="UserCard" Height="200" Width="356">
+    <Grid Margin="-1,0,1,-16">
+        <TextBox x:Name="NumberCardBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NumberCardBox_GotFocus" LostFocus="NumberCardBox_LostFocus" MaxLines="12" MinLines="12" MaxLength="12"/>
+        <TextBox x:Name="DateCardBox" HorizontalAlignment="Left" Margin="183,10,0,0" TextWrapping="Wrap" Text="Дата карты формата ММ-ГГГГ" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="DateCardBox_GotFocus" LostFocus="DateCardBox_LostFocus"/>
+        <TextBox x:Name="NameCardBox" HorizontalAlignment="Left" Margin="10,60,0,0" TextWrapping="Wrap" Text="Имя пользователя карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NameCardBox_GotFocus" LostFocus="NameCardBox_LostFocus"/>
+        <TextBox x:Name="CVCCardBox" HorizontalAlignment="Left" Margin="183,60,0,0" TextWrapping="Wrap" Text="CVC код карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" UndoLimit="3" MaxLines="3" MinLines="3" GotFocus="CVCCardBox_GotFocus" LostFocus="CVCCardBox_LostFocus" MaxLength="3"/>
+        <Button x:Name="InputButton" Content="Забронировать" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Height="39" Width="102" Click="InputButton_Click"/>
+
+    </Grid>
+</Window>
