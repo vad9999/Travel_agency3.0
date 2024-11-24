@@ -11,11 +11,12 @@ namespace Travel_agency
         List<User> GetAllUsers();
         User GetUserById(int id);
         void AddUser(User user);
+        void AddAdmin();
         void UpdateUser(User user);
         void DeleteUser(int id);
         bool GetBlockUser(string email);
         User GetUserByEmail(string email);
-        User UserAutentification();
         string GetHash(string rawData);
+        bool CheckUser(string email);
     }
 }

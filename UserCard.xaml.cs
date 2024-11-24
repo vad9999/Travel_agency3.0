@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для UserCard.xaml
-    /// </summary>
     public partial class UserCard : Window
     {
         public event EventHandler Card;
@@ -88,7 +85,7 @@ namespace Travel_agency
 
         private void NumberCardBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (NumberCardBox.Text == "")
+            if (NumberCardBox.Text.Trim() == "")
                 NumberCardBox.Text = "Номер карты";
         }
 
@@ -100,7 +97,7 @@ namespace Travel_agency
 
         private void NameCardBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (NameCardBox.Text == "")
+            if (NameCardBox.Text.Trim() == "")
                 NameCardBox.Text = "Имя пользователя карты";
         }
 
@@ -112,7 +109,7 @@ namespace Travel_agency
 
         private void DateCardBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (DateCardBox.Text == "")
+            if (DateCardBox.Text.Trim() == "")
                 DateCardBox.Text = "Дата карты формата ММ-ГГГГ";
         }
 
@@ -124,7 +121,7 @@ namespace Travel_agency
 
         private void CVCCardBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (CVCCardBox.Text == "")
+            if (CVCCardBox.Text.Trim() == "")
                 CVCCardBox.Text = "CVC код карты";
         }
     }

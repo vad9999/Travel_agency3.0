@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminAddTour.xaml
-    /// </summary>
     public partial class AdminAddTour : Window
     {
         string imagePath = null!;

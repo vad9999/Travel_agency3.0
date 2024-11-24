@@ -11,6 +11,6 @@ namespace Travel_agency
         void AddReservarion(Reservation reserv);
         void UpdateReservation(Reservation reserv);
         List<Reservation> GetAllReservarions();
-        List<Reservation> UserReservation(string userEmail);
+        List<ReservationViewModel> UserReservationViewModel(int userId);
     }
 }

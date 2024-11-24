@@ -12,9 +12,9 @@ namespace Travel_agency
         public string Name { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public bool IsAdmin { get; set; }
-        public bool Blocking { get; set; }
-        public bool isLogin {  get; set; }
-        public List<Reservation> Reservations { get; set; } = null!;   
+        public bool Blocking { get; set; } = false;
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public int? RoleId { get; set; } 
+        public Role? Role{ get; set; } 
     }
 }

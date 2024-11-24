@@ -17,6 +17,13 @@ namespace Travel_agency
             _context = context;
         }
 
+        public void AddAdmin()
+        {
+            var adminRole = _context.Role.First(r => r.Name == "Administrator");
+            _context.Users.Add(new User { Name = "admin", RoleId = adminRole.Id, Email = "admin", Password = GetHash("admin"), Blocking = false });
+            _context.SaveChanges();
+        }
+
         public List<User> GetAllUsers()
         {
             return _context.Users.ToList();
@@ -34,7 +41,7 @@ namespace Travel_agency
 
         public User GetUserByEmail(string email)
         {
-            return _context.Users.FirstOrDefault(u => u.Email == email); /*return _context.Users.Find(email);*/
+            return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public void AddUser(User user)
@@ -58,16 +65,6 @@ namespace Travel_agency
                 _context.SaveChanges();
             }
         }
-        public User UserAutentification()
-        {
-            List<User> users = GetAllUsers();
-            for (int i = 1; i <= users.Count; i++)
-            {
-                if (GetUserById(i).isLogin == true)
-                    return GetUserById(i);
-            }
-            return null;
-        }
 
         public string GetHash(string rawData)
         {
@@ -82,6 +79,18 @@ namespace Travel_agency
                 }
                 return builder.ToString();
             }
+        }
+        public bool CheckUser(string email)
+        {
+            var users = GetAllUsers();
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Email == email)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

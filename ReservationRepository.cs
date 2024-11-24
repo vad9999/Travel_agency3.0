@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,18 +34,23 @@ namespace Travel_agency
             _context.SaveChanges();
         }
 
-        public List<Reservation> UserReservation(string userEmail)
+        public List<ReservationViewModel> UserReservationViewModel(int userId)
         {
-            List<Reservation> reservations = GetAllReservarions();
-            List<Reservation> userReservations = new List<Reservation>();
-            for(int i = 0;  i < reservations.Count; i++)
-            {
-                if (reservations[i].UserEmail == userEmail)
+            var bookings = _context.Reservations
+                .Include(b => b.User)
+                .Include(b => b.Hotel)
+                .Include(b => b.Tour)
+                .Where(b => b.UserId == userId)
+                .Select(b => new ReservationViewModel
                 {
-                    userReservations.Add(reservations[i]);
-                }
-            }
-            return userReservations;
+                    Name = b.Hotel != null ? b.Hotel.Name : b.Tour.Name,
+                    Type = b.Hotel != null ? b.Hotel.Type : b.Tour.Type,
+                    ReservationDate = b.ReservationDate,
+                    Confirm = b.IsConfirm
+                })
+                .ToList();
+
+            return bookings; 
         }
     }
 }

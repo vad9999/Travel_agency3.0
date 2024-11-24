@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для SignUp.xaml
-    /// </summary>
     public partial class SignUp : Window
     {
         public SignUp()
@@ -26,48 +23,35 @@ namespace Travel_agency
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
-            if (NameBox.Text != "Введите имя" && NameBox.Text != "")
+            IUserRepository userRepository = new UserRepository(new AppDbContext());
+            IRoleRepository roleRepository = new RoleRepository(new AppDbContext());
+
+            string name = NameBox.Text;
+            string email = EmailBox.Text;
+            string password = PasswordBox.Text;
+
+            if (name != "Введите имя" && name.Trim() != "" && email != "Введите адрес эл. почты" && email.Trim() != "" && password != "Введите пароль" && password.Trim() != "")
             {
-                if (EmailBox.Text != "Введите адрес эл. почты" && EmailBox.Text != "")
+                if (!userRepository.CheckUser(email))
                 {
-                    if (PasswordBox.Text != "Введите пароль" && PasswordBox.Text != "")
+                    if(DataProcessingCheck.IsChecked == true)
                     {
-                        bool email = false;
-                        var users = UserRepository.GetAllUsers().ToList();
-                        for (int i = 0; i < users.Count; i++)
+                        if(email.Contains('@'))
                         {
-                            if (users[i].Email == UserRepository.GetHash(EmailBox.Text))
-                            {
-                                email = true;
-                                MessageBox.Show("Пользователь с такой почтой уже зарегистрирован");
-                                break;
-                            }
+                            userRepository.AddUser(new User { Name = name, Email = email, Password = userRepository.GetHash(password), RoleId =  roleRepository.CustomerId() });
+                            NameBox.Text = "Введите имя";
+                            EmailBox.Text = "Введите адрес эл. почты";
+                            PasswordBox.Text = "Введите пароль";
+                            DataProcessingCheck.IsChecked = false;
                         }
-                        if (!email)
-                        {
-                            if(DataProcessingCheck.IsChecked == true)
-                            {
-                                if(EmailBox.Text.Contains('@'))
-                                {
-                                    UserRepository.AddUser(new User { Name = NameBox.Text, Email = EmailBox.Text, Password = UserRepository.GetHash(PasswordBox.Text), IsAdmin = false, Blocking = false, isLogin = false });
-                                    NameBox.Text = "Введите имя";
-                                    EmailBox.Text = "Введите адрес эл. почты";
-                                    PasswordBox.Text = "Введите пароль";
-                                    DataProcessingCheck.IsChecked = false;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Эл. почта должна содержать @");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Дайте согласие на обработку персональных данных!");
-                            }
-                        }
+                        else
+                            MessageBox.Show("Эл. почта должна содержать @");
                     }
+                    else
+                        MessageBox.Show("Дайте согласие на обработку персональных данных!");
                 }
+                else
+                    MessageBox.Show("Пользователь с такой почтой уже зарегистрирован");
             }
         }
 
@@ -86,7 +70,7 @@ namespace Travel_agency
 
         private void NameBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text == "")
+            if (NameBox.Text.Trim() == "")
                 NameBox.Text = "Введите имя";
         }
 
@@ -98,7 +82,7 @@ namespace Travel_agency
 
         private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (EmailBox.Text == "")
+            if (EmailBox.Text.Trim() == "")
                 EmailBox.Text = "Введите адрес эл. почты";
         }
 
@@ -110,7 +94,7 @@ namespace Travel_agency
 
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (PasswordBox.Text == "")
+            if (PasswordBox.Text.Trim() == "")
                 PasswordBox.Text = "Введите пароль";
         }
     }

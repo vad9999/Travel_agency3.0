@@ -11,7 +11,7 @@ namespace Travel_agency
 {
     public class Tours
     {
-        public int Id { get; set; }
+        public int TourId { get; set; }
         public string Type { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Country { get; set; } = null!;
@@ -20,7 +20,6 @@ namespace Travel_agency
         public bool IsArchive { get; set; }
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
-        public List<Reservation> Reservations { get; set; } = null!;
         public byte[]? ImageData { get; set; }
         public BitmapImage ImageSource
         {

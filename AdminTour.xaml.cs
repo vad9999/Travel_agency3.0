@@ -108,7 +108,7 @@ namespace Travel_agency
                 if(TourHotelListView.SelectedItem is Tours)
                 {
                     Tours selectedTour = (Tours)TourHotelListView.SelectedItem;
-                    TourRepository.DeleteTour(selectedTour.Id);
+                    TourRepository.DeleteTour(selectedTour.TourId);
                 }
                 if(TourHotelListView.SelectedItem is Hotels)
                 {

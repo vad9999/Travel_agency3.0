@@ -43,7 +43,7 @@ namespace Travel_agency
             List<Tours> nonarchive = new List<Tours>();
             if(tours.Count > 0)
             {
-                for (int i = 1; i <= tours[tours.Count - 1].Id; i++)
+                for (int i = 1; i <= tours[tours.Count - 1].TourId; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -62,7 +62,7 @@ namespace Travel_agency
             List<Tours> archive = new List<Tours>();
             if (tours.Count > 0)
             {
-                for (int i = 1; i <= tours[tours.Count - 1].Id; i++)
+                for (int i = 1; i <= tours[tours.Count - 1].TourId; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -85,7 +85,7 @@ namespace Travel_agency
             List<Tours> tour = GetAllTours();
             if (tour.Count > 0)
             {
-                for (int i = 1; i <= tour[tour.Count - 1].Id; i++)
+                for (int i = 1; i <= tour[tour.Count - 1].TourId; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -118,9 +118,7 @@ namespace Travel_agency
                     }
                 }
             }
-
             return combinedData;
         }
-
     }
 }

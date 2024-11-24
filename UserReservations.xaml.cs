@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для UserReservations.xaml
-    /// </summary>
     public partial class UserReservations : Window
     {
         public UserReservations()
@@ -29,11 +26,8 @@ namespace Travel_agency
         private void LoadData()
         {
             IReservationRepository ReservationRepository = new ReservationRepository(new AppDbContext());
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
 
-            string userEmail = UserRepository.UserAutentification().Email; 
-            List<Reservation> reservations = ReservationRepository.UserReservation(userEmail);
-            ReservationListView.ItemsSource = reservations;
+            ReservationListView.ItemsSource = ReservationRepository.UserReservationViewModel(Session.CurrentUser.Id);
         }
     }
 }

@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminReservationList.xaml
-    /// </summary>
     public partial class AdminReservationList : Window
     {
         public AdminReservationList()
@@ -28,6 +25,7 @@ namespace Travel_agency
         private void LoadData()
         {
             IReservationRepository reservationRepository = new ReservationRepository(new AppDbContext());
+
             List<Reservation> reservations = reservationRepository.GetAllReservarions();
             ReservationsListView.ItemsSource = reservations;
         }
@@ -35,6 +33,7 @@ namespace Travel_agency
         private void ReservationTrueButton_Click(object sender, RoutedEventArgs e)
         {
             IReservationRepository reservationRepository = new ReservationRepository(new AppDbContext());
+
             Reservation reservation = (Reservation)ReservationsListView.SelectedItem;
             if (reservation != null)
             {

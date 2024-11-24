@@ -9,11 +9,13 @@ namespace Travel_agency
     public class Reservation
     {
         public int Id { get; set; }
-        public int TourOrHotelId { get; set; }
-        public string Name { get; set; } = null!;
-        public string UserEmail { get; set; } = null!;
-        public string Type { get; set; } = null!;
-        public bool IsConfirm { get; set; }
+        public bool IsConfirm { get; set; } = false;
+        public int? HotelId { get; set; }
+        public Hotels? Hotel { get; set; }
+        public int? TourId { get; set; }
+        public Tours? Tour { get; set; }
         public DateOnly ReservationDate { get; set; }
+        public int? UserId { get; set; }
+        public User? User { get; set; }
     }
 }

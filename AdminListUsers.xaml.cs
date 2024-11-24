@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminListUsers.xaml
-    /// </summary>
     public partial class AdminListUsers : Window
     {
         public AdminListUsers()
@@ -30,11 +27,8 @@ namespace Travel_agency
 
         private void LoadUsers()
         {
-            using (var context = new AppDbContext())
-            {
-                IUserRepository UserRepository = new UserRepository(context);
+                IUserRepository UserRepository = new UserRepository(new AppDbContext());
                 UserListView.ItemsSource = UserRepository.GetAllUsers(); 
-            }
         }
 
         private void BlockingTrueButton_Click(object sender, RoutedEventArgs e)

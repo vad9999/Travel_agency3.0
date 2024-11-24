@@ -41,6 +41,7 @@ namespace Travel_agency
         private void LoadData()
         {
             ITourRepository TourRepository = new TourRepository(new AppDbContext());
+
             _allItems = TourRepository.DateCheckAndGetList();
             _filteredItems = new List<object>(_allItems);
         }
@@ -135,69 +136,30 @@ namespace Travel_agency
         private void CardWindow(object sender, EventArgs e)
         {
             IReservationRepository ReservationRepository = new ReservationRepository(new AppDbContext());
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
 
-            if (TourHotelListView != null)
+            var selectedItem = TourHotelListView.SelectedItem;
+
+            if (selectedItem is Tours)
             {
-                var selectedItem = TourHotelListView.SelectedItem;
-
-                if (selectedItem is Tours)
+                Tours tour = (Tours)selectedItem;
+                ReservationRepository.AddReservarion(new Reservation
                 {
-                    
-                    Tours tour = (Tours)selectedItem;
-                    string user = UserRepository.UserAutentification().Email;
-                    var reservations = ReservationRepository.UserReservation(user);
-                    bool IsReservated = false;
-                    for (int i = 0; i < reservations.Count; i++)
-                    {
-                        if (reservations[i].TourOrHotelId == tour.Id && reservations[i].Type == tour.Type)
-                        {
-                            IsReservated = true;
-                        }
-                    }
-                    if (IsReservated)
-                    {
-                        MessageBox.Show("Вы уже забронировали этот тур");
-                    }
-                    else
-                    {
-                        ReservationRepository.AddReservarion(new Reservation { UserEmail = user, TourOrHotelId = tour.Id, Type = tour.Type, IsConfirm = false, Name = tour.Name, ReservationDate = DateOnly.FromDateTime(DateTime.Now) });
-                        MessageBox.Show("Тур забронирован!");
-                    }
-                }
-                else
-                {
-                    string user = UserRepository.UserAutentification().Email;
-                    var reservations = ReservationRepository.UserReservation(user);
-                    Hotels hotel = (Hotels)selectedItem;
-                    bool IsReservated = false;
-
-                    for (int i = 0; i < reservations.Count; i++)
-                    {
-                        if (reservations[i].TourOrHotelId == hotel.Id && reservations[i].Type == hotel.Type)
-                        {
-                            IsReservated = true;
-                        }
-                    }
-                    if (IsReservated)
-                    {
-                        MessageBox.Show("Вы уже забронировали этот отель");
-                    }
-                    else
-                    {
-                        ReservationRepository.AddReservarion(new Reservation { UserEmail = user, TourOrHotelId = hotel.Id, Type = hotel.Type, IsConfirm = false, Name = hotel.Name });
-                        MessageBox.Show("Отель забронирован!");
-                    }
-                }
+                    TourId = tour.TourId,
+                    UserId = Session.CurrentUser.Id,
+                    ReservationDate = DateOnly.FromDateTime(DateTime.Now)
+                });
+                MessageBox.Show("Тур забронирован!");
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
-            User user = UserRepository.UserAutentification();
-            user.isLogin = false;
-            UserRepository.UpdateUser(user);
+            else
+            {
+                Hotels hotel = (Hotels)selectedItem;
+                ReservationRepository.AddReservarion(new Reservation { 
+                    HotelId = hotel.Id,
+                    UserId = Session.CurrentUser.Id,
+                    ReservationDate = DateOnly.FromDateTime(DateTime.Now)
+                });
+                MessageBox.Show("Отель забронирован!");
+            }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

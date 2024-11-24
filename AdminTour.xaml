@@ -22,7 +22,7 @@
                     <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country}" />
                     <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
                     <GridViewColumn Header="Описание" Width="187" DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn Header="Описание" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="Дата окончания" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -23,73 +20,60 @@ namespace Travel_agency
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
+            IRoleRepository roleRepository = new RoleRepository(new AppDbContext());
+            IUserRepository userRepository = new UserRepository(new AppDbContext());
 
-            bool admin = false;
-            var users = UserRepository.GetAllUsers().ToList();
-            for (int i = 0; i < users.Count; i++)
-            {
-                if (users[i].IsAdmin)
-                {
-                    admin = true;
-                    break;
-                }
-            }
-            if (!admin)
-            {
-                UserRepository.AddUser(new User { Name = "admin", Email = "admin", Password = UserRepository.GetHash("admin"), IsAdmin = true, Blocking = false, isLogin = false });
-            }
+            if(roleRepository.GetAll().Count == 0)
+                roleRepository.AddRoles();
+            if(userRepository.GetAllUsers().Count == 0)
+                userRepository.AddAdmin();
         }
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-            IUserRepository UserRepository = new UserRepository(new AppDbContext());
+            IUserRepository userRepository = new UserRepository(new AppDbContext());
+            IRoleRepository roleRepository = new RoleRepository(new AppDbContext());
 
-            if ((EmailBox.Text != "Введите эл. почту" && EmailBox.Text != "") && (PasswordBox.Text != "Введите пароль" && PasswordBox.Text != ""))
+            string email = EmailBox.Text;
+            string password = PasswordBox.Text;
+            User user = userRepository.GetUserByEmail(email);
+
+            if (email != "Введите эл. почту" && email.Trim() != "" && password != "Введите пароль" && password.Trim() != "")
             {
-                if(UserRepository.GetUserByEmail(EmailBox.Text) != null)
+                if(user != null)
                 {
-                    if (UserRepository.GetUserByEmail(EmailBox.Text).Password == UserRepository.GetHash(PasswordBox.Text))
+                    if (user.Password == userRepository.GetHash(password))
                     {
-                        if(EmailBox.Text == "admin" && PasswordBox.Text == "admin")
+                        if(user.RoleId == roleRepository.CustomerId())
                         {
-                            AdminTour adminTour = new AdminTour();
-                            adminTour.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            if (!UserRepository.GetBlockUser(EmailBox.Text))
+                            if (!userRepository.GetBlockUser(email))
                             {
-                                UserRepository.GetUserByEmail(EmailBox.Text).isLogin = true;
-                                UserRepository.UpdateUser(UserRepository.GetUserByEmail(EmailBox.Text));
+                                Session.CurrentUser = user;
                                 UserTour userTour = new UserTour();
                                 userTour.Show();
                                 this.Close();
                             }
                             else
                             {
-                                if (MessageBox.Show("Вы заблокированы админимтратором!", "", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
-                                {
+                                if (MessageBox.Show("Вы заблокированы администратором!", "", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
                                     this.Close();
-                                }
                             }
+                        }
+                        else
+                        {
+                            AdminTour adminTour = new AdminTour();
+                            adminTour.Show();
+                            this.Close();
                         }
                     }
                     else
-                    {
                         MessageBox.Show("Неправльный пароль!");
-                    }
                 }
                 else
-                {
                     MessageBox.Show("Пользователь с такой почтой не зарегистрирован!");
-                }
             }
             else
-            {
-                MessageBox.Show("Введите почту или пароль");
-            }
+                MessageBox.Show("Введите почту и(или) пароль");
         }
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
@@ -107,13 +91,13 @@ namespace Travel_agency
 
         private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (EmailBox.Text == "")
+            if (EmailBox.Text.Trim() == "")
                 EmailBox.Text = "Введите эл. почту";
         }
 
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (PasswordBox.Text == "")
+            if (PasswordBox.Text.Trim() == "")
                 PasswordBox.Text = "Введите пароль";
         }
 
