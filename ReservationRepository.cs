@@ -33,6 +33,11 @@ namespace Travel_agency
             _context.Reservations.Update(reserv);
             _context.SaveChanges();
         }
+    
+        public Reservation GetReservationById(int id)
+        {
+            return _context.Reservations.Find(id);
+        }
 
         public List<ReservationViewModel> UserReservationViewModel(int userId)
         {
@@ -46,11 +51,31 @@ namespace Travel_agency
                     Name = b.Hotel != null ? b.Hotel.Name : b.Tour.Name,
                     Type = b.Hotel != null ? b.Hotel.Type : b.Tour.Type,
                     ReservationDate = b.ReservationDate,
-                    Confirm = b.IsConfirm
+                    IsConfirm = b.IsConfirm
                 })
                 .ToList();
 
             return bookings; 
+        }
+
+        public List<ReservationViewModel> AdminReservationViewModel()
+        {
+            var bookings = _context.Reservations
+                .Include(b => b.User)
+                .Include(b => b.Hotel)
+                .Include(b => b.Tour)
+                .Select(b => new ReservationViewModel
+                {
+                    Id = b.Id,
+                    UserEmail = b.User.Email,
+                    Name = b.Hotel != null ? b.Hotel.Name : b.Tour.Name,
+                    Type = b.Hotel != null ? b.Hotel.Type : b.Tour.Type,
+                    ReservationDate = b.ReservationDate,
+                    IsConfirm = b.IsConfirm
+                })
+                .ToList();
+
+            return bookings;
         }
     }
 }

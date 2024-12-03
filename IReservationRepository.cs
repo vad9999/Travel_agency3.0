@@ -12,5 +12,7 @@ namespace Travel_agency
         void UpdateReservation(Reservation reserv);
         List<Reservation> GetAllReservarions();
         List<ReservationViewModel> UserReservationViewModel(int userId);
+        List<ReservationViewModel> AdminReservationViewModel();
+        Reservation GetReservationById(int id);
     }
 }

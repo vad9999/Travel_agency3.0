@@ -26,7 +26,7 @@ namespace Travel_agency
         {
             IReservationRepository reservationRepository = new ReservationRepository(new AppDbContext());
 
-            List<Reservation> reservations = reservationRepository.GetAllReservarions();
+            List<ReservationViewModel> reservations = reservationRepository.AdminReservationViewModel();
             ReservationsListView.ItemsSource = reservations;
         }
 
@@ -34,11 +34,12 @@ namespace Travel_agency
         {
             IReservationRepository reservationRepository = new ReservationRepository(new AppDbContext());
 
-            Reservation reservation = (Reservation)ReservationsListView.SelectedItem;
+            var reservation = (ReservationViewModel)ReservationsListView.SelectedItem;
             if (reservation != null)
             {
-                reservation.IsConfirm = true;
-                reservationRepository.UpdateReservation(reservation);
+                Reservation res = reservationRepository.GetReservationById(reservation.Id);
+                res.IsConfirm = true;
+                reservationRepository.UpdateReservation(res);
             }
             LoadData();
         }
