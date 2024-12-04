@@ -11,7 +11,7 @@ namespace Travel_agency
 {
     public class Tours
     {
-        public int TourId { get; set; }
+        public int Id { get; set; }
         public string Type { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Country { get; set; } = null!;

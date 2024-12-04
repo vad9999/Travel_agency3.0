@@ -36,7 +36,7 @@ namespace Travel_agency
                 {
                     if(DataProcessingCheck.IsChecked == true)
                     {
-                        if(email.Contains('@'))
+                        if(email.Contains('@') && email.Contains('.'))
                         {
                             userRepository.AddUser(new User { Name = name, Email = email, Password = userRepository.GetHash(password), RoleId =  roleRepository.CustomerId() });
                             NameBox.Text = "Введите имя";
@@ -45,7 +45,7 @@ namespace Travel_agency
                             DataProcessingCheck.IsChecked = false;
                         }
                         else
-                            MessageBox.Show("Эл. почта должна содержать @");
+                            MessageBox.Show("Эл. почта должна содержать @ и .");
                     }
                     else
                         MessageBox.Show("Дайте согласие на обработку персональных данных!");

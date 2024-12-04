@@ -16,9 +16,6 @@ using Microsoft.Win32;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminEdit.xaml
-    /// </summary>
     public partial class AdminEdit : Window
     {
         public event EventHandler ItemAdded;
@@ -38,6 +35,10 @@ namespace Travel_agency
                 EditCountryBox.Text = TourToEdit.Country;
                 DiscriptionEditBox.Text = TourToEdit.Description;
                 PriceEditBox.Text = TourToEdit.Price.ToString();
+                StartDateBox.IsEnabled = true;
+                EndDateBox.IsEnabled = true;
+                StartDateBox.Text = TourToEdit.StartDate.ToString();
+                EndDateBox.Text = TourToEdit.EndDate.ToString();
             }
             else
             {
@@ -47,6 +48,8 @@ namespace Travel_agency
                 EditCountryBox.Text = HotelToEdit.Country;
                 DiscriptionEditBox.Text = HotelToEdit.Description;
                 PriceEditBox.Text = HotelToEdit.Price.ToString();
+                StartDateBox.IsEnabled = false;
+                EndDateBox.IsEnabled = false;
             }   
         }
 
@@ -59,11 +62,10 @@ namespace Travel_agency
             string Description = DiscriptionEditBox.Text;
             string Country = EditCountryBox.Text;
             string Price = PriceEditBox.Text;
-
             if (string.IsNullOrEmpty(Name) ||
-               string.IsNullOrEmpty(Description) ||
-               string.IsNullOrEmpty(Country) ||
-               string.IsNullOrEmpty(Price))
+                   string.IsNullOrEmpty(Description) ||
+                   string.IsNullOrEmpty(Country) ||
+                   string.IsNullOrEmpty(Price))
             {
                 MessageBox.Show("Пожалуйста заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -74,13 +76,30 @@ namespace Travel_agency
                 MessageBox.Show("Цена должна быть числом", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
             if (IsTour)
             {
+                string StartDate = StartDateBox.Text;
+                string EndDate = EndDateBox.Text;
+
+                if (string.IsNullOrEmpty(StartDate) ||
+                   string.IsNullOrEmpty(EndDate))
+                {
+                    MessageBox.Show("Пожалуйста заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if(DateOnly.Parse(StartDate) > DateOnly.Parse(EndDate))
+                {
+                    MessageBox.Show("Дата окончания не может быть раньше даты начала тура", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 TourToEdit.Name = Name;
                 TourToEdit.Description = Description;
                 TourToEdit.Country = Country;
                 TourToEdit.Price = decimal.Parse(Price);
+                TourToEdit.StartDate = DateOnly.Parse(StartDate);
+                TourToEdit.EndDate = DateOnly.Parse(EndDate);
                 if (imagePath != null)
                     TourToEdit.ImageData = File.ReadAllBytes(imagePath);
                 TourRepository.UpdateTour(TourToEdit);
@@ -89,6 +108,7 @@ namespace Travel_agency
             }
             else
             {
+                
                 HotelToEdit.Name = Name;
                 HotelToEdit.Description = Description;
                 HotelToEdit.Country = Country;

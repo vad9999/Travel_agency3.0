@@ -17,11 +17,6 @@ namespace Travel_agency
             _context = context;
         }
 
-        public List<Reservation> GetAllReservarions()
-        {
-            return _context.Reservations.ToList();
-        }
-
         public void AddReservarion(Reservation reserv)
         {
             _context.Reservations.Add(reserv);

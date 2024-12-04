@@ -22,9 +22,6 @@ namespace Travel_agency
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Tours>()
-                .HasKey(t => t.TourId);
-
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Role) // Один пользователь связан с одной ролью
                 .WithMany(r => r.Users) // Одна роль может иметь много пользователей

@@ -49,8 +49,16 @@ namespace Travel_agency
                 if (ArchiveListView.SelectedItem is Tours)
                 {
                     Tours selectedTour = (Tours)ArchiveListView.SelectedItem;
-                    selectedTour.IsArchive = false;
-                    TourRepository.UpdateTour(selectedTour);  
+                    if(selectedTour.EndDate < DateOnly.FromDateTime(DateTime.Today))
+                    {
+                        MessageBox.Show("Измените дату окончания тура", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    else
+                    {
+                        selectedTour.IsArchive = false;
+                        TourRepository.UpdateTour(selectedTour);
+                    }
                 }
                 if (ArchiveListView.SelectedItem is Hotels)
                 {
@@ -67,6 +75,22 @@ namespace Travel_agency
         {
             ItemNonArchive?.Invoke(this, EventArgs.Empty);
             this.Close();
+        }
+
+        private void EditTourButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ArchiveListView.SelectedItem != null)
+            {
+                object selectedItem = ArchiveListView.SelectedItem;
+                AdminEdit adminEdit = new AdminEdit(selectedItem);
+                adminEdit.ItemAdded += AddWindow_ItemAdded;
+                adminEdit.ShowDialog();
+            }
+        }
+
+        private void AddWindow_ItemAdded(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

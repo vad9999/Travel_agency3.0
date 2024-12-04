@@ -47,7 +47,7 @@ namespace Travel_agency
 
             if(number.Length < 12)
             {
-                MessageBox.Show("Номер должен быть 12 значным числом", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Номер должен быть 16 значным числом", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

@@ -15,35 +15,30 @@ namespace Travel_agency
         {
             _context = context;
         }
+
         public List<Tours> GetAllTours()
         {
             return _context.Tours.ToList();
         }
+
         public void AddTour(Tours tour)
         {
             _context.Tours.Add(tour);
             _context.SaveChanges();
         }
+
         public Tours GetTourById(int id)
         {
             return _context.Tours.Find(id);
         }
-        public void DeleteTour(int id)
-        {
-            var tour = GetTourById(id);
-            if (tour != null)
-            {
-                _context.Tours.Remove(tour);
-                _context.SaveChanges();
-            }
-        }
+
         public List<Tours> GetAllToursNonArchive()
         {
             List<Tours> tours = GetAllTours();
             List<Tours> nonarchive = new List<Tours>();
             if(tours.Count > 0)
             {
-                for (int i = 1; i <= tours[tours.Count - 1].TourId; i++)
+                for (int i = 1; i <= tours[tours.Count - 1].Id; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -56,13 +51,14 @@ namespace Travel_agency
             }
             return nonarchive;
         }
+
         public List<Tours> GetAllToursArchive()
         {
             List<Tours> tours = GetAllTours();
             List<Tours> archive = new List<Tours>();
             if (tours.Count > 0)
             {
-                for (int i = 1; i <= tours[tours.Count - 1].TourId; i++)
+                for (int i = 1; i <= tours[tours.Count - 1].Id; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -80,12 +76,13 @@ namespace Travel_agency
             _context.Tours.Update(tour);
             _context.SaveChanges();
         }
+
         public bool DoubleName(string name)
         {
             List<Tours> tour = GetAllTours();
             if (tour.Count > 0)
             {
-                for (int i = 1; i <= tour[tour.Count - 1].TourId; i++)
+                for (int i = 1; i <= tour[tour.Count - 1].Id; i++)
                 {
                     if (GetTourById(i) != null)
                     {
@@ -114,6 +111,8 @@ namespace Travel_agency
                 {
                     if (tour.EndDate < DateOnly.FromDateTime(DateTime.Now))
                     {
+                        tour.IsArchive = true;
+                        UpdateTour(tour);
                         combinedData.RemoveAt(i);
                     }
                 }

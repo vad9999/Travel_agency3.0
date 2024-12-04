@@ -11,7 +11,6 @@ namespace Travel_agency
         List<Hotels> GetAllHotels();
         void AddHotel(Hotels hotel);
         Hotels GetHotelById(int id);
-        void DeleteHotel(int id);
         List<Hotels> GetAllHotelsNonArchive();
         List<Hotels> GetAllHotelsArchive();
         void UpdateHotel(Hotels hotel);

@@ -99,27 +99,6 @@ namespace Travel_agency
             IsOnePage();
         }
 
-        private void DeleteTourButton_Click(object sender, RoutedEventArgs e)
-        {
-            ITourRepository TourRepository = new TourRepository(new AppDbContext());
-            IHotelRepository HotelRepository = new HotelRepository(new AppDbContext());
-            if (TourHotelListView.SelectedItem != null)
-            {
-                if(TourHotelListView.SelectedItem is Tours)
-                {
-                    Tours selectedTour = (Tours)TourHotelListView.SelectedItem;
-                    TourRepository.DeleteTour(selectedTour.TourId);
-                }
-                if(TourHotelListView.SelectedItem is Hotels)
-                {
-                    Hotels selectedHotel = (Hotels)TourHotelListView.SelectedItem;
-                    HotelRepository.DeleteHotel(selectedHotel.Id);
-                }
-                UpdateListView();
-                IsOnePage();
-            }
-        }
-
         private void ArchiveButton_Click(object sender, RoutedEventArgs e)
         {
             ArchiveAdmin archiveAdmin = new ArchiveAdmin();

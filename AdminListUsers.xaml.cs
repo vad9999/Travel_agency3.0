@@ -27,8 +27,8 @@ namespace Travel_agency
 
         private void LoadUsers()
         {
-                IUserRepository UserRepository = new UserRepository(new AppDbContext());
-                UserListView.ItemsSource = UserRepository.GetAllUsers(); 
+            IUserRepository UserRepository = new UserRepository(new AppDbContext());
+            UserListView.ItemsSource = UserRepository.GetAllUsers(); 
         }
 
         private void BlockingTrueButton_Click(object sender, RoutedEventArgs e)

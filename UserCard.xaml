@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="UserCard" Height="200" Width="356">
     <Grid Margin="-1,0,1,-16">
-        <TextBox x:Name="NumberCardBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NumberCardBox_GotFocus" LostFocus="NumberCardBox_LostFocus" MaxLines="12" MinLines="12" MaxLength="12"/>
+        <TextBox x:Name="NumberCardBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NumberCardBox_GotFocus" LostFocus="NumberCardBox_LostFocus" MaxLines="12" MinLines="12" MaxLength="16"/>
         <TextBox x:Name="DateCardBox" HorizontalAlignment="Left" Margin="183,10,0,0" TextWrapping="Wrap" Text="Дата карты формата ММ-ГГГГ" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="DateCardBox_GotFocus" LostFocus="DateCardBox_LostFocus"/>
         <TextBox x:Name="NameCardBox" HorizontalAlignment="Left" Margin="10,60,0,0" TextWrapping="Wrap" Text="Имя пользователя карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NameCardBox_GotFocus" LostFocus="NameCardBox_LostFocus"/>
         <TextBox x:Name="CVCCardBox" HorizontalAlignment="Left" Margin="183,60,0,0" TextWrapping="Wrap" Text="CVC код карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" UndoLimit="3" MaxLines="3" MinLines="3" GotFocus="CVCCardBox_GotFocus" LostFocus="CVCCardBox_LostFocus" MaxLength="3"/>

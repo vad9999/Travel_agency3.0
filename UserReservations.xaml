@@ -12,7 +12,7 @@
                 <GridView>
                     <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Тип" Width="65" DisplayMemberBinding="{Binding Type}" />
-                    <GridViewColumn Header="Подтверждение" Width="100" DisplayMemberBinding="{Binding Confirm}" />
+                    <GridViewColumn Header="Подтверждение" Width="100" DisplayMemberBinding="{Binding IsConfirm}" />
                     <GridViewColumn Header="Дата бронирования" Width="120" DisplayMemberBinding="{Binding ReservationDate}" />
                 </GridView>
             </ListView.View>

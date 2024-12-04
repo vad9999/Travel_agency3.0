@@ -16,9 +16,6 @@ using Microsoft.Win32;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminAddHotel.xaml
-    /// </summary>
     public partial class AdminAddHotel : Window
     {
         string imagePath = null!;
@@ -83,7 +80,7 @@ namespace Travel_agency
 
         private void NameHotelBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (NameHotelBox.Text == "")
+            if (NameHotelBox.Text.Trim() == "")
                 NameHotelBox.Text = "Введите название отеля";
         }
 
@@ -95,7 +92,7 @@ namespace Travel_agency
 
         private void CountryHotelBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (CountryHotelBox.Text == "")
+            if (CountryHotelBox.Text.Trim() == "")
                 CountryHotelBox.Text = "Введите страну отеля";
         }
 
@@ -107,7 +104,7 @@ namespace Travel_agency
 
         private void DiscriptionHotelBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (DiscriptionHotelBox.Text == "")
+            if (DiscriptionHotelBox.Text.Trim() == "")
                 DiscriptionHotelBox.Text = "Введите описание отеля";
         }
 
@@ -119,7 +116,7 @@ namespace Travel_agency
 
         private void PriceHotelBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (PriceHotelBox.Text == "")
+            if (PriceHotelBox.Text.Trim() == "")
                 PriceHotelBox.Text = "Введите цену отеля";
         }
     }

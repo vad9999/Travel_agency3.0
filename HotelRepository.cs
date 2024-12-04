@@ -14,28 +14,23 @@ namespace Travel_agency
         {
             _context = context;
         }
+
         public List<Hotels> GetAllHotels()
         {
             return _context.Hotels.ToList();
         }
+
         public void AddHotel(Hotels hotel)
         {
             _context.Hotels.Add(hotel);
             _context.SaveChanges();
         }
+
         public Hotels GetHotelById(int id)
         {
             return _context.Hotels.Find(id);
         }
-        public void DeleteHotel(int id)
-        {
-            var hotel = GetHotelById(id);
-            if (hotel != null)
-            {
-                _context.Hotels.Remove(hotel);
-                _context.SaveChanges();
-            }
-        }
+
         public List<Hotels> GetAllHotelsNonArchive()
         {
             List<Hotels> hotel = GetAllHotels();
@@ -74,11 +69,13 @@ namespace Travel_agency
             }
             return archive;
         }
+
         public void UpdateHotel(Hotels hotel)
         {
             _context.Hotels.Update(hotel);
             _context.SaveChanges();
         }
+
         public bool DoubleName(string name)
         {
             List<Hotels> hotel = GetAllHotels();

@@ -31,10 +31,5 @@ namespace Travel_agency
         {
             return _context.Role.First(r => r.Name == "Customer").Id;
         }
-
-        public int AdminId()
-        {
-            return _context.Role.First(r => r.Name == "Administrator").Id;
-        }
     }
 }

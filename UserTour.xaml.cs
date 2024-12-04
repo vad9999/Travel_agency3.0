@@ -144,7 +144,7 @@ namespace Travel_agency
                 Tours tour = (Tours)selectedItem;
                 ReservationRepository.AddReservarion(new Reservation
                 {
-                    TourId = tour.TourId,
+                    TourId = tour.Id,
                     UserId = Session.CurrentUser.Id,
                     ReservationDate = DateOnly.FromDateTime(DateTime.Now)
                 });

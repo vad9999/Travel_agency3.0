@@ -34,11 +34,6 @@ namespace Travel_agency
             return _context.Users.SingleOrDefault(u => u.Email == email).Blocking;
         }
 
-        public User GetUserById(int id)
-        {
-            return _context.Users.Find(id);
-        }
-
         public User GetUserByEmail(string email)
         {
             return _context.Users.FirstOrDefault(u => u.Email == email);
@@ -56,16 +51,6 @@ namespace Travel_agency
             _context.SaveChanges();
         }
 
-        public void DeleteUser(int id)
-        {
-            var user = GetUserById(id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
-            }
-        }
-
         public string GetHash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -80,6 +65,7 @@ namespace Travel_agency
                 return builder.ToString();
             }
         }
+
         public bool CheckUser(string email)
         {
             var users = GetAllUsers();

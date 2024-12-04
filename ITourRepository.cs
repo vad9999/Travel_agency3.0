@@ -11,7 +11,6 @@ namespace Travel_agency
         List<Tours> GetAllTours();
         void AddTour(Tours tour);
         Tours GetTourById(int id);
-        void DeleteTour(int id);
         List<Tours> GetAllToursNonArchive();
         List<Tours> GetAllToursArchive();
         void UpdateTour(Tours tour);

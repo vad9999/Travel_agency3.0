@@ -42,12 +42,16 @@ namespace Travel_agency
             string tourDescription = DescriptionTourBox.Text;
             string tourPrice = PriceTourBox.Text;
             string tourCountry = CountryTourBox.Text;
+            string StartDate = StartDateBox.Text;
+            string EndDate = EndDateBox.Text;
 
             if (string.IsNullOrEmpty(tourName) ||
                 string.IsNullOrEmpty(tourDescription) ||
                 string.IsNullOrEmpty(tourPrice) ||
                 string.IsNullOrEmpty(tourCountry) ||
-                string.IsNullOrEmpty(imagePath))
+                string.IsNullOrEmpty(imagePath) ||
+                string.IsNullOrEmpty(StartDate) ||
+                string.IsNullOrEmpty(EndDate))
             {
                 MessageBox.Show("Пожалуйста заполните все поля и добавьте фотографию", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -55,13 +59,19 @@ namespace Travel_agency
 
             if (!decimal.TryParse(tourPrice, out decimal price))
             {
-                MessageBox.Show("Цена должна быть цислом", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Цена должна быть числом", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (TourRepository.DoubleName(tourName))
             {
                 MessageBox.Show("Тур с таким названием уже есть", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (DateOnly.Parse(StartDate) > DateOnly.Parse(EndDate))
+            {
+                MessageBox.Show("Дата окончания не может быть раньше даты начала тура", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

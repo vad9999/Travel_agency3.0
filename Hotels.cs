@@ -17,7 +17,6 @@ namespace Travel_agency
         public decimal Price { get; set; }
         public string Description { get; set; } = null!;
         public bool IsArchive { get; set; }
-        public List<Reservation> Reservations { get; set; } = null!;
         public byte[]? ImageData { get; set; }
         public BitmapImage ImageSource
         {

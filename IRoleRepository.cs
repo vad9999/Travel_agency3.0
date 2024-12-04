@@ -11,6 +11,5 @@ namespace Travel_agency
         List<Role> GetAll();
         void AddRoles();
         int CustomerId();
-        int AdminId();
     }
 }
