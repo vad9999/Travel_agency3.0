@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Travel_agency
 {
-    /// <summary>
-    /// Логика взаимодействия для ArchiveAdmin.xaml
-    /// </summary>
     public partial class ArchiveAdmin : Window
     {
         public event EventHandler ItemNonArchive;
@@ -74,7 +71,6 @@ namespace Travel_agency
         private void Window_Closed(object sender, EventArgs e)
         {
             ItemNonArchive?.Invoke(this, EventArgs.Empty);
-            this.Close();
         }
 
         private void EditTourButton_Click(object sender, RoutedEventArgs e)
@@ -83,6 +79,8 @@ namespace Travel_agency
             {
                 object selectedItem = ArchiveListView.SelectedItem;
                 AdminEdit adminEdit = new AdminEdit(selectedItem);
+                adminEdit.Left = this.Left;
+                adminEdit.Top = this.Top;
                 adminEdit.ItemAdded += AddWindow_ItemAdded;
                 adminEdit.ShowDialog();
             }

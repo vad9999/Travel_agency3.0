@@ -5,16 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="UserTour" Height="519" Width="858">
+        Title="" Height="519" Width="858"
+        ResizeMode="NoResize">
     <Grid Margin="0,0,0,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="NextButton" Content="Следующая страница" HorizontalAlignment="Left" Margin="539,430,0,0" Width="150" Click="NextButton_Click" Height="40" VerticalAlignment="Top"/>
-        <Button x:Name="PreviousButtonn" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="PreviousButtonn_Click"/>
-        <Button x:Name="ReservarionButton" Content="Забронировать" HorizontalAlignment="Left" Margin="85,5,0,0" VerticalAlignment="Top" Height="35" Width="104" Click="ReservarionButton_Click"/>
-        <Button x:Name="ReservationListButton" Content="Брони" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="35" Width="65" Click="ReservationListButton_Click"/>
+        <Button x:Name="NextButton" Content="Следующая страница" HorizontalAlignment="Left" Margin="539,430,0,0" Width="150" Click="NextButton_Click" Height="40" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="PreviousButtonn" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" Height="40" Width="153" Click="PreviousButtonn_Click" FontSize="14"/>
+        <Button x:Name="ReservarionButton" Content="Забронировать" HorizontalAlignment="Left" Margin="85,5,0,0" VerticalAlignment="Top" Height="35" Width="111" Click="ReservarionButton_Click" FontSize="14"/>
+        <Button x:Name="ReservationListButton" Content="Брони" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="35" Width="65" Click="ReservationListButton_Click" FontSize="14"/>
         <ListView x:Name="TourHotelListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,48,0,0" HorizontalAlignment="Left" Width="679" Height="376" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
@@ -33,9 +30,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="705,48,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="705,48,0,0" TextWrapping="Wrap" Text="Поиск:" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="705,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="33" TextChanged="SearchBox_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="705,122,0,0" TextWrapping="Wrap" Text="Сортировка" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="705,122,0,0" TextWrapping="Wrap" Text="Сортировка:" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="861,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
         <ComboBox x:Name="SortBox" Margin="705,148,0,0" VerticalAlignment="Top" Height="31" SelectionChanged="SortBox_SelectionChanged" HorizontalAlignment="Left" Width="120">
             <ComboBoxItem Content="Название" Tag="Name"/>
@@ -43,5 +40,6 @@
             <ComboBoxItem Content="Страна" Tag="Country"/>
             <ComboBoxItem Content="Описание" Tag="Description"/>
         </ComboBox>
+        <Button x:Name="Exit" Content="Выйти из уч. записи" HorizontalAlignment="Left" Margin="201,5,0,0" VerticalAlignment="Top" Height="35" Width="149" Click="Exit_Click" FontSize="14"/>
     </Grid>
 </Window>

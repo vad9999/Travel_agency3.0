@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="AdminEdit" Height="235" Width="555">
+        Title="" Height="235" Width="555"
+        ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="EditNameBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="148" Height="39"/>
         <TextBox x:Name="EditCountryBox" HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" Text="Введите страну" VerticalAlignment="Top" Width="148" Height="39"/>

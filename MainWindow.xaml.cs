@@ -35,10 +35,15 @@ namespace Travel_agency
             IRoleRepository roleRepository = new RoleRepository(new AppDbContext());
 
             string email = EmailBox.Text;
-            string password = PasswordBox.Text;
+            string password;
             User user = userRepository.GetUserByEmail(email);
 
-            if (email != "Введите эл. почту" && email.Trim() != "" && password != "Введите пароль" && password.Trim() != "")
+            if (showpass.IsChecked == true)
+                password = PasswordBox.Text;
+            else
+                password = pass.Password;
+
+            if (email.Trim() != "" && password.Trim() != "")
             {
                 if(user != null)
                 {
@@ -50,6 +55,8 @@ namespace Travel_agency
                             {
                                 Session.CurrentUser = user;
                                 UserTour userTour = new UserTour();
+                                userTour.Top = this.Top;
+                                userTour.Left = this.Left;
                                 userTour.Show();
                                 this.Close();
                             }
@@ -62,6 +69,8 @@ namespace Travel_agency
                         else
                         {
                             AdminTour adminTour = new AdminTour();
+                            adminTour.Left = this.Left;
+                            adminTour.Top = this.Top;
                             adminTour.Show();
                             this.Close();
                         }
@@ -79,32 +88,24 @@ namespace Travel_agency
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             SignUp signUp = new SignUp();
+            signUp.Left = this.Left;
+            signUp.Top = this.Top;
             signUp.Show();
             this.Close();
         }
 
-        private void EmailBox_GotFocus(object sender, RoutedEventArgs e)
+        private void showpass_Checked(object sender, RoutedEventArgs e)
         {
-            if (EmailBox.Text == "Введите эл. почту")
-                EmailBox.Text = "";
+            PasswordBox.Text = pass.Password;
+            pass.Visibility = Visibility.Collapsed;
+            PasswordBox.Visibility = Visibility.Visible;
         }
 
-        private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
+        private void showpass_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (EmailBox.Text.Trim() == "")
-                EmailBox.Text = "Введите эл. почту";
-        }
-
-        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (PasswordBox.Text.Trim() == "")
-                PasswordBox.Text = "Введите пароль";
-        }
-
-        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (PasswordBox.Text == "Введите пароль")
-                PasswordBox.Text = "";
+            pass.Password = PasswordBox.Text;
+            PasswordBox.Visibility = Visibility.Collapsed;
+            pass.Visibility = Visibility.Visible;
         }
     }
 }

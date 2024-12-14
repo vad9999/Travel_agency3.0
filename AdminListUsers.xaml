@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="AdminListUsers" Height="198" Width="553">
+        Title="" Height="198" Width="510"
+        ResizeMode="NoResize">
     <Grid>
-        <ListView x:Name="UserListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" RenderTransformOrigin="0.5,0.5" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="395" Height="139" VerticalAlignment="Top">
+        <ListView x:Name="UserListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" RenderTransformOrigin="0.5,0.5" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="352" Height="139" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="40"/>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}" Width="100"/>
                     <GridViewColumn Header="Эл. почта" DisplayMemberBinding="{Binding Email}" Width="150"/>
                     <GridViewColumn Header="Блокировка" DisplayMemberBinding="{Binding Blocking}" Width="75"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="BlockingTrueButton" Content="Заблокировать" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top" Height="45" Width="110" Click="BlockingTrueButton_Click"/>
-        <Button x:Name="BlockingFalseButton" Content="Разблокировать" Margin="410,60,0,0" VerticalAlignment="Top" Height="45" Click="BlockingFalseButton_Click" HorizontalAlignment="Left" Width="110"/>
+        <Button x:Name="BlockingTrueButton" Content="Заблокировать" HorizontalAlignment="Left" Margin="367,10,0,0" VerticalAlignment="Top" Height="28" Width="110" Click="BlockingTrueButton_Click" FontSize="14"/>
+        <Button x:Name="BlockingFalseButton" Content="Разблокировать" Margin="367,43,0,0" VerticalAlignment="Top" Height="28" Click="BlockingFalseButton_Click" FontSize="14" HorizontalAlignment="Left" Width="110"/>
     </Grid>
 </Window>

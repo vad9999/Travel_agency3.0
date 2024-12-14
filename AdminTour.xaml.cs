@@ -59,12 +59,16 @@ namespace Travel_agency
         private void AllUsersButton_Click(object sender, RoutedEventArgs e)
         {
             AdminListUsers adminListUsers = new AdminListUsers();
-            adminListUsers.Show();
+            adminListUsers.Left = this.Left;
+            adminListUsers.Top = this.Top;
+            adminListUsers.ShowDialog();
         }
 
         private void AddTourButton_Click(object sender, RoutedEventArgs e)
         {
             AdminAddTour adminAddTour = new AdminAddTour();
+            adminAddTour.Left = this.Left;
+            adminAddTour.Top = this.Top;
             adminAddTour.ItemAdded += AddWindow_ItemAdded;
             adminAddTour.ShowDialog();
         }
@@ -72,25 +76,18 @@ namespace Travel_agency
         private void AddHotelButton_Click(object sender, RoutedEventArgs e)
         {
             AdminAddHotel adminAddHotel = new AdminAddHotel();
+            adminAddHotel.Top = this.Top;
+            adminAddHotel.Left = this.Left;
             adminAddHotel.ItemAdded += AddWindow_ItemAdded;
             adminAddHotel.ShowDialog();
-        }
-
-        private void EditTourButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (TourHotelListView.SelectedItem != null)
-            {
-                object selectedItem = TourHotelListView.SelectedItem;
-                AdminEdit adminEdit = new AdminEdit(selectedItem);
-                adminEdit.ItemAdded += AddWindow_ItemAdded;
-                adminEdit.ShowDialog();
-            }    
         }
 
         private void ReservationListButton_Click(object sender, RoutedEventArgs e)
         {
             AdminReservationList adminReservationList = new AdminReservationList();
-            adminReservationList.Show();
+            adminReservationList.Left = this.Left;
+            adminReservationList.Top = this.Top;
+            adminReservationList.ShowDialog();
         }
 
         private void AddWindow_ItemAdded(object sender, EventArgs e)
@@ -102,14 +99,10 @@ namespace Travel_agency
         private void ArchiveButton_Click(object sender, RoutedEventArgs e)
         {
             ArchiveAdmin archiveAdmin = new ArchiveAdmin();
-            archiveAdmin.ItemNonArchive += ArchiveWindow_ItemNonArchive;
+            archiveAdmin.Top = this.Top;
+            archiveAdmin.Left = this.Left;
+            archiveAdmin.ItemNonArchive += AddWindow_ItemAdded;
             archiveAdmin.ShowDialog();
-        }
-
-        private void ArchiveWindow_ItemNonArchive(object sender, EventArgs e)
-        {
-            UpdateListView();
-            IsOnePage();
         }
 
         private void ZipButton_Click(object sender, RoutedEventArgs e)
@@ -163,6 +156,15 @@ namespace Travel_agency
             {
                 NextButton.IsEnabled = false;
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Left = this.Left;
+            main.Top = this.Top;
+            main.Show();
+            this.Close();
         }
     }
 }

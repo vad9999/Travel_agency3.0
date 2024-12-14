@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="AdminAddTour" Height="229" Width="555">
+        Title="" Height="229" Width="555"
+        ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="NameTourBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите название тура" VerticalAlignment="Top" Width="148" Height="39" GotFocus="NameTourBox_GotFocus" LostFocus="NameTourBox_LostFocus"/>
         <TextBox x:Name="DescriptionTourBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание тура" VerticalAlignment="Top" Width="206" Height="83" GotFocus="DescriptionTourBox_GotFocus" LostFocus="DescriptionTourBox_LostFocus"/>

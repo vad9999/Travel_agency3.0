@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="AdminReservationList" Height="209" Width="671">
+        Title="" Height="209" Width="671"
+        ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="ReservationTrueButton" Content="Подтвердить" Margin="513,10,0,0" VerticalAlignment="Top" Height="49" Click="ReservationTrueButton_Click" HorizontalAlignment="Left" Width="125"/>
+        <Button x:Name="ReservationTrueButton" Content="Подтвердить" Margin="513,10,0,0" VerticalAlignment="Top" Height="27" Click="ReservationTrueButton_Click" FontSize="14" HorizontalAlignment="Left" Width="125"/>
         <ListView x:Name="ReservationsListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" HorizontalAlignment="Left" Width="498" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>

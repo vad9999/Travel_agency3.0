@@ -28,9 +28,14 @@ namespace Travel_agency
 
             string name = NameBox.Text;
             string email = EmailBox.Text;
-            string password = PasswordBox.Text;
+            string password;
 
-            if (name != "Введите имя" && name.Trim() != "" && email != "Введите адрес эл. почты" && email.Trim() != "" && password != "Введите пароль" && password.Trim() != "")
+            if (showpass.IsChecked == true)
+                password = PasswordBox.Text;
+            else
+                password = pass.Password;
+
+            if (name.Trim() != "" && email.Trim() != "" && password.Trim() != "")
             {
                 if (!userRepository.CheckUser(email))
                 {
@@ -58,44 +63,24 @@ namespace Travel_agency
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
+            mainWindow.Top = this.Top;
+            mainWindow.Left = this.Left;
             mainWindow.Show();
             this.Close();
         }
 
-        private void NameBox_GotFocus(object sender, RoutedEventArgs e)
+        private void showpass_Checked(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text == "Введите имя")
-                NameBox.Text = "";
+            PasswordBox.Text = pass.Password;
+            pass.Visibility = Visibility.Collapsed;
+            PasswordBox.Visibility = Visibility.Visible;
         }
 
-        private void NameBox_LostFocus(object sender, RoutedEventArgs e)
+        private void showpass_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (NameBox.Text.Trim() == "")
-                NameBox.Text = "Введите имя";
-        }
-
-        private void EmailBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (EmailBox.Text == "Введите адрес эл. почты")
-                EmailBox.Text = "";
-        }
-
-        private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (EmailBox.Text.Trim() == "")
-                EmailBox.Text = "Введите адрес эл. почты";
-        }
-
-        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (PasswordBox.Text == "Введите пароль")
-                PasswordBox.Text = "";
-        }
-
-        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (PasswordBox.Text.Trim() == "")
-                PasswordBox.Text = "Введите пароль";
+            pass.Password = PasswordBox.Text;
+            PasswordBox.Visibility = Visibility.Collapsed;
+            pass.Visibility = Visibility.Visible;
         }
     }
 }

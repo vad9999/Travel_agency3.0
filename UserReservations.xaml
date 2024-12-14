@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="UserReservations" Height="225" Width="455">
+        Title="" Height="225" Width="455"
+        ResizeMode="NoResize">
     <Grid>
         <ListView x:Name="ReservationListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="412" Height="166" VerticalAlignment="Top">
             <ListView.View>

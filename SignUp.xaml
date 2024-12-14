@@ -5,14 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="SignUp" Height="500" Width="850">
+        Title="" Height="428" Width="626"
+        ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="LogInButton" Content="Войти" FontSize="20" Height="60" Width="200" Click="LogInButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="617,10,0,0"/>
-        <Button x:Name="SignUpButton" Content="Зарегистрироваться" Width="200" FontSize="20" Click="SignUpButton_Click" HorizontalAlignment="Left" Margin="617,390,0,0" Height="61" VerticalAlignment="Top"/>
-        <TextBox x:Name="NameBox" TextWrapping="Wrap" Text="Введите имя" Width="234" FontSize="20" Height="35" HorizontalAlignment="Left" GotFocus="NameBox_GotFocus" LostFocus="NameBox_LostFocus" VerticalAlignment="Top" Margin="300,140,0,0"/>
-        <TextBox x:Name="EmailBox" TextWrapping="Wrap" Text="Введите адрес эл. почты" Width="234" Height="35" FontSize="20" HorizontalAlignment="Left" GotFocus="EmailBox_GotFocus" LostFocus="EmailBox_LostFocus" VerticalAlignment="Top" Margin="300,190,0,0"/>
-        <TextBox x:Name="PasswordBox" TextWrapping="Wrap" Text="Введите пароль" Width="234" Height="35" FontSize="20" HorizontalAlignment="Left" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" VerticalAlignment="Top" Margin="300,240,0,0"/>
-        <CheckBox x:Name="DataProcessingCheck" Content="" Height="20" Width="23" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.522,0.352" Margin="521,325,0,0"/>
-        <Label x:Name="dataProcessingLabel" Content="Согласен(а) на обработку персональных данных" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="150,315,0,0"/>
+        <Button x:Name="LogInButton" Content="Войти" FontSize="18" Height="30" Width="120" Click="LogInButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="473,23,0,0"/>
+        <Button x:Name="SignUpButton" Content="Зарегистрироваться" FontSize="18" Click="SignUpButton_Click" Margin="413,348,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
+        <TextBox x:Name="NameBox" TextWrapping="Wrap" Width="200" FontSize="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,132,0,0"/>
+        <TextBox x:Name="EmailBox" TextWrapping="Wrap" Width="200" Height="30" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,176,0,0"/>
+        <TextBox x:Name="PasswordBox" TextWrapping="Wrap" Width="200" Height="30" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,220,0,0" Visibility="Collapsed"/>
+        <CheckBox x:Name="DataProcessingCheck" Content="Согласен(а) на обработку персональных данных" Height="20" Width="337" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.522,0.352" Margin="213,264,0,0" FontSize="14"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" Margin="159,132,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Эл. почта:" HorizontalAlignment="Left" Margin="117,176,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="125,220,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <CheckBox x:Name="showpass" Content="Скрыть/Показать пароль" HorizontalAlignment="Left" Margin="424,227,0,0" VerticalAlignment="Top" Checked="showpass_Checked" Unchecked="showpass_Unchecked"/>
+        <PasswordBox x:Name="pass" HorizontalAlignment="Left" Margin="213,220,0,0" VerticalAlignment="Top" Width="200" Height="30" FontSize="18"/>
     </Grid>
 </Window>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="AdminAddHotel" Height="192" Width="555">
+        Title="" Height="192" Width="555"
+        ResizeMode="NoResize">
     <Grid Margin="0,0,0,0">
         <Button x:Name="SaveButton" Content="Сохранить" Margin="374,98,0,0" VerticalAlignment="Top" Height="39" Click="SaveButton_Click" HorizontalAlignment="Left" Width="148"/>
         <TextBox x:Name="NameHotelBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите название отеля" VerticalAlignment="Top" Width="148" Height="39" GotFocus="NameHotelBox_GotFocus" LostFocus="NameHotelBox_LostFocus"/>

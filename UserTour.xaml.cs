@@ -93,6 +93,8 @@ namespace Travel_agency
         private void ReservationListButton_Click(object sender, RoutedEventArgs e)
         {
             UserReservations userReservations = new UserReservations();
+            userReservations.Top = this.Top;
+            userReservations.Left = this.Left;
             userReservations.ShowDialog();
         }
 
@@ -128,6 +130,8 @@ namespace Travel_agency
             if (TourHotelListView.SelectedItem != null)
             {
                 UserCard userCard = new UserCard();
+                userCard.Left = this.Left;
+                userCard.Top = this.Top;
                 userCard.Card += CardWindow;
                 userCard.ShowDialog();
             }
@@ -208,6 +212,16 @@ namespace Travel_agency
                         item is Hotels hotel ? hotel.Description : "").ToList();
                 }
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            main.Top = this.Top;
+            main.Left = this.Left;
+            Session.CurrentUser = null;
+            this.Close();
         }
     }
 }

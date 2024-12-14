@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="ArchiveAdmin" Height="425" Width="1277" Closed="Window_Closed">
+        Title="" Height="425" Width="1093"
+        ResizeMode="NoResize">
     <Grid>
-        <ListView x:Name="ArchiveListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" HorizontalAlignment="Left" Width="949" Height="366" VerticalAlignment="Top">
+        <ListView x:Name="ArchiveListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" HorizontalAlignment="Left" Width="914" Height="366" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Тип" Width="50" DisplayMemberBinding="{Binding Type}" />
@@ -21,14 +22,14 @@
                     <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country}" />
                     <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Описание" Width="220" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Описание" Width="187" DisplayMemberBinding="{Binding Description}"/>
                     <GridViewColumn Header="Дата начала" Width="120" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="Дата окончания" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="UnZipButton" Content="Разархивировать" Margin="1126,10,0,0" VerticalAlignment="Top" Click="UnZipButton_Click" Height="35" HorizontalAlignment="Left" Width="120"/>
-        <Button x:Name="EditTourButton" Content="Изменить" HorizontalAlignment="Left" Margin="1126,50,0,0" VerticalAlignment="Top" Height="35" Width="120" Click="EditTourButton_Click"/>
+        <Button x:Name="UnZipButton" Content="Разархивировать" Margin="940,10,0,0" VerticalAlignment="Top" Click="UnZipButton_Click" Height="35" HorizontalAlignment="Left" Width="120" FontSize="14"/>
+        <Button x:Name="EditTourButton" Content="Редактировать" Margin="940,50,0,0" VerticalAlignment="Top" Height="35" Click="EditTourButton_Click" FontSize="14" HorizontalAlignment="Left" Width="120"/>
 
     </Grid>
 </Window>

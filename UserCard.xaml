@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="UserCard" Height="200" Width="356">
-    <Grid Margin="-1,0,1,-16">
+        Title="" Height="200" Width="356"
+        ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0">
         <TextBox x:Name="NumberCardBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Номер карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NumberCardBox_GotFocus" LostFocus="NumberCardBox_LostFocus" MaxLines="12" MinLines="12" MaxLength="16"/>
         <TextBox x:Name="DateCardBox" HorizontalAlignment="Left" Margin="183,10,0,0" TextWrapping="Wrap" Text="Дата карты формата ММ-ГГГГ" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="DateCardBox_GotFocus" LostFocus="DateCardBox_LostFocus"/>
         <TextBox x:Name="NameCardBox" HorizontalAlignment="Left" Margin="10,60,0,0" TextWrapping="Wrap" Text="Имя пользователя карты" VerticalAlignment="Top" Width="148" Height="45" FontSize="14" GotFocus="NameCardBox_GotFocus" LostFocus="NameCardBox_LostFocus"/>
