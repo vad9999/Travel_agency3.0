@@ -21,13 +21,17 @@ namespace Travel_agency
     {
         private int _currentPage = 1;
         private const int _itemsPerPage = 6;
+        private List<object> _allItems;
+        private List<object> _filteredItems;
 
         public AdminTour()
         {
             InitializeComponent();
-            UpdateListView();
-            PreviousButtonn.IsEnabled = false;
+            LoadData();
             IsOnePage();
+            UpdateListView();
+            UpdatePaginationButtons();
+            PreviousButtonn.IsEnabled = false;
         }
 
         private void IsOnePage()
@@ -42,18 +46,97 @@ namespace Travel_agency
                 NextButton.IsEnabled = true;
             }
         }
+        private void LoadData()
+        {
+            ITourRepository TourRepository = new TourRepository(new AppDbContext());
+
+            _allItems = TourRepository.DateCheckAndGetList();
+            _filteredItems = new List<object>(_allItems);
+        }
 
         private void UpdateListView()
         {
-            ITourRepository TourRepository = new TourRepository(new AppDbContext());
-            var itemsToShow = TourRepository.DateCheckAndGetList().Skip((_currentPage - 1) * _itemsPerPage).Take(_itemsPerPage).ToList();
-            TourHotelListView.ItemsSource = itemsToShow;
+            TourHotelListView.ItemsSource = GetPagedFilteredData();
+        }
+        private List<object> GetPagedFilteredData()
+        {
+            string searchText = SearchBox.Text.ToLower();
+            _filteredItems = _allItems.Where(item =>
+            {
+                if (item is Tours tour)
+                {
+                    return tour.Name.ToLower().Contains(searchText);
+                }
+                else if (item is Hotels hotel)
+                {
+                    return hotel.Name.ToLower().Contains(searchText);
+                }
+                return false;
+            }).ToList();
+
+            ApplySort();
+
+            return _filteredItems.Skip((_currentPage - 1) * _itemsPerPage).Take(_itemsPerPage).ToList();
         }
 
         private int GetTotalPages()
         {
-            ITourRepository TourRepository = new TourRepository(new AppDbContext());
-            return (int)Math.Ceiling((double)TourRepository.DateCheckAndGetList().Count / _itemsPerPage);
+            return (int)Math.Ceiling((double)_filteredItems.Count / _itemsPerPage);
+        }
+
+        private void UpdatePaginationButtons()
+        {
+            int totalPages = GetTotalPages();
+            PreviousButtonn.IsEnabled = _currentPage > 1;
+            NextButton.IsEnabled = _currentPage < totalPages;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _currentPage = 1;
+            UpdateListView();
+            UpdatePaginationButtons();
+        }
+
+        private void SortBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplySort();
+            UpdateListView();
+        }
+
+        private void ApplySort()
+        {
+            var selectedSort = SortBox.SelectedItem as ComboBoxItem;
+            if (selectedSort != null)
+            {
+                string sortBy = selectedSort.Tag.ToString();
+
+                if (sortBy == "Name")
+                {
+                    _filteredItems = _filteredItems.OrderBy(item =>
+                        item is Tours tour ? tour.Name :
+                        item is Hotels hotel ? hotel.Name : "").ToList();
+                }
+                else if (sortBy == "Price")
+                {
+                    _filteredItems = _filteredItems.OrderBy(item =>
+                        item is Tours tour ? tour.Price :
+                        item is Hotels hotel ? hotel.Price : 0).ToList();
+
+                }
+                else if (sortBy == "Country")
+                {
+                    _filteredItems = _filteredItems.OrderBy(item =>
+                        item is Tours tour ? tour.Country :
+                        item is Hotels hotel ? hotel.Country : "").ToList();
+                }
+                else if (sortBy == "Description")
+                {
+                    _filteredItems = _filteredItems.OrderBy(item =>
+                        item is Tours tour ? tour.Description :
+                        item is Hotels hotel ? hotel.Description : "").ToList();
+                }
+            }
         }
 
         private void AllUsersButton_Click(object sender, RoutedEventArgs e)
@@ -92,8 +175,12 @@ namespace Travel_agency
 
         private void AddWindow_ItemAdded(object sender, EventArgs e)
         {
+            LoadData();
             UpdateListView();
             IsOnePage();
+            UpdatePaginationButtons();
+            if (_currentPage == GetTotalPages())
+                NextButton.IsEnabled = false;
         }
 
         private void ArchiveButton_Click(object sender, RoutedEventArgs e)
@@ -125,36 +212,30 @@ namespace Travel_agency
                 }
                 if (TourRepository.DateCheckAndGetList().Count == 6)
                     _currentPage = 1;
+                LoadData();
                 UpdateListView();
                 IsOnePage();
+                UpdatePaginationButtons();
             }
         }
 
         private void PreviousButtonn_Click(object sender, RoutedEventArgs e)
         {
-            NextButton.IsEnabled = true;
             if (_currentPage > 1)
             {
                 _currentPage--;
                 UpdateListView();
-            }
-            if (_currentPage == 1)
-            {
-                PreviousButtonn.IsEnabled = false;
+                UpdatePaginationButtons();
             }
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            PreviousButtonn.IsEnabled = true;
             if (_currentPage < GetTotalPages())
             {
                 _currentPage++;
                 UpdateListView();
-            }
-            if (_currentPage == GetTotalPages())
-            {
-                NextButton.IsEnabled = false;
+                UpdatePaginationButtons();
             }
         }
 

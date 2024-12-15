@@ -11,7 +11,15 @@
         <ListView x:Name="ReservationListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="412" Height="166" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Название" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" 
+                                    TextWrapping="Wrap" 
+                                    MaxHeight="100" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Тип" Width="65" DisplayMemberBinding="{Binding Type}" />
                     <GridViewColumn Header="Подтверждение" Width="100" DisplayMemberBinding="{Binding IsConfirm}" />
                     <GridViewColumn Header="Дата бронирования" Width="120" DisplayMemberBinding="{Binding ReservationDate}" />

@@ -8,7 +8,7 @@
         ResizeMode="NoResize">
     <Grid x:Name="Grid1">
         <TextBox x:Name="EmailBox" TextWrapping="Wrap" Width="200" Height="30" FontSize="18" MaxLength="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,132,0,0"/>
-        <TextBox x:Name="PasswordBox" TextWrapping="Wrap" Width="200" Height="30" FontSize="18" MaxLength="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,176,0,0" Visibility="Collapsed"/>
+        <TextBox x:Name="PasswordBox" TextWrapping="Wrap" Width="200" Height="30" FontSize="18" MaxLength="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="213,176,0,0" Visibility="Collapsed"/>
         <Button x:Name="SignUpButton" Content="Регистрация" Height="30" FontSize="18" VerticalAlignment="Top" Click="SignUpButton_Click" Margin="467,23,0,0" HorizontalAlignment="Left" Width="126"/>
         <Button x:Name="LogInButton" Content="Войти" FontSize="18" Click="LogInButton_Click" Margin="473,349,0,0" HorizontalAlignment="Left" Width="120" Height="30" VerticalAlignment="Top"/>
         <PasswordBox x:Name="pass" HorizontalAlignment="Left" Margin="213,176,0,0" VerticalAlignment="Top" Width="200" Height="30" FontSize="20"/>

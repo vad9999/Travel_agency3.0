@@ -10,7 +10,7 @@
     <Grid Margin="0,0,0,0">
         <Button x:Name="SaveButton" Content="Сохранить" Margin="374,98,0,0" VerticalAlignment="Top" Height="39" Click="SaveButton_Click" HorizontalAlignment="Left" Width="148"/>
         <TextBox x:Name="NameHotelBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите название отеля" VerticalAlignment="Top" Width="148" Height="39" GotFocus="NameHotelBox_GotFocus" LostFocus="NameHotelBox_LostFocus"/>
-        <TextBox x:Name="DiscriptionHotelBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание отеля" VerticalAlignment="Top" Width="206" Height="83" GotFocus="DiscriptionHotelBox_GotFocus" LostFocus="DiscriptionHotelBox_LostFocus"/>
+        <TextBox x:Name="DiscriptionHotelBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание отеля" VerticalAlignment="Top" Width="206" Height="83" GotFocus="DiscriptionHotelBox_GotFocus" LostFocus="DiscriptionHotelBox_LostFocus" MaxLength="250"/>
         <Button x:Name="AddImageButton" Content="Добавить фотографию" HorizontalAlignment="Left" Margin="10,98,0,0" Width="148" Click="AddImageButton_Click" Height="39" VerticalAlignment="Top"/>
         <TextBox x:Name="PriceHotelBox" Margin="374,10,0,0" TextWrapping="Wrap" Text="Введите цену отеля" VerticalAlignment="Top" Height="39" GotFocus="PriceHotelBox_GotFocus" LostFocus="PriceHotelBox_LostFocus" HorizontalAlignment="Left" Width="148"/>
         <TextBox x:Name="CountryHotelBox" HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" Text="Введите страну отеля" VerticalAlignment="Top" Width="148" Height="39" GotFocus="CountryHotelBox_GotFocus" LostFocus="CountryHotelBox_LostFocus"/>

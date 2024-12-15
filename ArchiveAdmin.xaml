@@ -19,10 +19,26 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Название" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" 
+                                    TextWrapping="Wrap" 
+                                    MaxHeight="100" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country}" />
-                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Описание" Width="187" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Цена(₽)" Width="100" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Описание" Width="187">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Description}" 
+                                    TextWrapping="Wrap" 
+                                    MaxHeight="250" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Дата начала" Width="120" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="Дата окончания" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
                 </GridView>

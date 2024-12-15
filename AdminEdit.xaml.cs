@@ -35,8 +35,8 @@ namespace Travel_agency
                 EditCountryBox.Text = TourToEdit.Country;
                 DiscriptionEditBox.Text = TourToEdit.Description;
                 PriceEditBox.Text = TourToEdit.Price.ToString();
-                StartDateBox.IsEnabled = true;
-                EndDateBox.IsEnabled = true;
+                StartDateBox.Visibility = Visibility.Visible;
+                EndDateBox.Visibility = Visibility.Visible;
                 StartDateBox.Text = TourToEdit.StartDate.ToString();
                 EndDateBox.Text = TourToEdit.EndDate.ToString();
             }
@@ -48,8 +48,8 @@ namespace Travel_agency
                 EditCountryBox.Text = HotelToEdit.Country;
                 DiscriptionEditBox.Text = HotelToEdit.Description;
                 PriceEditBox.Text = HotelToEdit.Price.ToString();
-                StartDateBox.IsEnabled = false;
-                EndDateBox.IsEnabled = false;
+                StartDateBox.Visibility = Visibility.Collapsed;
+                EndDateBox.Visibility = Visibility.Collapsed;
             }   
         }
 

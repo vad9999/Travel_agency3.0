@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="" Height="235" Width="555"
+        Title="" Height="258" Width="555"
         ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="EditNameBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="148" Height="39"/>
@@ -13,7 +13,7 @@
         <TextBox x:Name="DiscriptionEditBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание" VerticalAlignment="Top" Width="206" Height="83"/>
         <TextBox x:Name="PriceEditBox" HorizontalAlignment="Left" Margin="374,10,0,0" TextWrapping="Wrap" Text="Введите цену" VerticalAlignment="Top" Width="148" Height="39"/>
         <Button x:Name="EditImageButton" Content="Изменить фотографию" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="39" Width="148" Click="EditImageButton_Click"/>
-        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="374,170,0,0" VerticalAlignment="Top" Height="39" Width="148" Click="SaveButton_Click"/>
+        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="374,170,0,0" Width="148" Click="SaveButton_Click" Height="39" VerticalAlignment="Top"/>
         <TextBox x:Name="StartDateBox" HorizontalAlignment="Left" Margin="10,98,0,0" TextWrapping="Wrap" Text="Введите дату начала тура" VerticalAlignment="Top" Width="148" Height="39"/>
         <TextBox x:Name="EndDateBox" HorizontalAlignment="Left" Margin="163,98,0,0" TextWrapping="Wrap" Text="Введите дату окончания тура" VerticalAlignment="Top" Width="206" Height="39"/>
     </Grid>

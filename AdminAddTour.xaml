@@ -9,7 +9,7 @@
         ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="NameTourBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Введите название тура" VerticalAlignment="Top" Width="148" Height="39" GotFocus="NameTourBox_GotFocus" LostFocus="NameTourBox_LostFocus"/>
-        <TextBox x:Name="DescriptionTourBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание тура" VerticalAlignment="Top" Width="206" Height="83" GotFocus="DescriptionTourBox_GotFocus" LostFocus="DescriptionTourBox_LostFocus"/>
+        <TextBox x:Name="DescriptionTourBox" HorizontalAlignment="Left" Margin="163,10,0,0" TextWrapping="Wrap" Text="Введите описание тура" VerticalAlignment="Top" Width="206" Height="83" GotFocus="DescriptionTourBox_GotFocus" LostFocus="DescriptionTourBox_LostFocus" MaxLength="250"/>
         <TextBox x:Name="PriceTourBox" HorizontalAlignment="Left" Margin="374,10,0,0" TextWrapping="Wrap" Text="Введите цену тура" VerticalAlignment="Top" Width="148" Height="39" GotFocus="PriceTourBox_GotFocus" LostFocus="PriceTourBox_LostFocus"/>
         <Button x:Name="ImageButton" Content="Добавить фотографию" HorizontalAlignment="Left" Margin="10,142,0,0" Width="148" Click="ImageButton_Click" Height="38" VerticalAlignment="Top"/>
         <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="374,142,0,0" VerticalAlignment="Top" Height="38" Width="148" Click="SaveButton_Click"/>

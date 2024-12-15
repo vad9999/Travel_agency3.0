@@ -44,9 +44,10 @@ namespace Travel_agency
                         if(email.Contains('@') && email.Contains('.'))
                         {
                             userRepository.AddUser(new User { Name = name, Email = email, Password = userRepository.GetHash(password), RoleId =  roleRepository.CustomerId() });
-                            NameBox.Text = "Введите имя";
-                            EmailBox.Text = "Введите адрес эл. почты";
-                            PasswordBox.Text = "Введите пароль";
+                            NameBox.Text = "";
+                            EmailBox.Text = "";
+                            PasswordBox.Text = "";
+                            pass.Password = "";
                             DataProcessingCheck.IsChecked = false;
                         }
                         else

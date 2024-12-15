@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Travel_agency"
         mc:Ignorable="d"
-        Title="" Height="499" Width="957"
+        Title="" Height="499" Width="1105"
         ResizeMode="NoResize">
     <Grid>
         <ListView x:Name="TourHotelListView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,45,0,0" Height="360" VerticalAlignment="Top" HorizontalAlignment="Left" Width="914">
@@ -19,17 +19,33 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Название" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" 
+                                   TextWrapping="Wrap" 
+                                   MaxHeight="100" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Страна" Width="100" DisplayMemberBinding="{Binding Country}" />
-                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Описание" Width="187" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Цена(₽)" Width="100" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Описание" Width="187">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Description}" 
+                                   TextWrapping="Wrap" 
+                                   MaxHeight="250" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Дата начала" Width="120" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="Дата окончания" Width="120" DisplayMemberBinding="{Binding EndDate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="PreviousButtonn" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="40" Width="153" Click="PreviousButtonn_Click" FontSize="14"/>
-        <Button x:Name="NextButton" Content="Следующая страница" HorizontalAlignment="Left" Margin="774,410,0,0" Width="150" Click="NextButton_Click" Height="40" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="PreviousButtonn" Content="←" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="40" Width="40" Click="PreviousButtonn_Click" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="NextButton" Content="→" HorizontalAlignment="Left" Margin="884,410,0,0" Width="40" Click="NextButton_Click" Height="40" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <Button x:Name="AddHotelButton" Content="Добавить отель" HorizontalAlignment="Left" Margin="385,5,0,0" VerticalAlignment="Top" Height="35" Width="109" Click="AddHotelButton_Click" FontSize="14"/>
         <Button x:Name="AddTourButton" Content="Добавить тур" HorizontalAlignment="Left" Margin="285,5,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="AddTourButton_Click" FontSize="14"/>
         <Button x:Name="AllUsersButton" Content="Список пользователей" HorizontalAlignment="Left" Margin="125,5,0,0" VerticalAlignment="Top" Height="35" Width="155" Click="AllUsersButton_Click" FontSize="14"/>
@@ -37,6 +53,15 @@
         <Button x:Name="ZipButton" Content="Архивировать" Margin="499,5,0,0" VerticalAlignment="Top" Click="ZipButton_Click" Height="35" HorizontalAlignment="Left" Width="100" FontSize="14"/>
         <Button x:Name="ArchiveButton" Content="Список архива" HorizontalAlignment="Left" Margin="604,5,0,0" VerticalAlignment="Top" Click="ArchiveButton_Click" Height="35" Width="102" FontSize="14"/>
         <Button x:Name="Exit" Content="Выйти из уч. записи" HorizontalAlignment="Left" Margin="711,5,0,0" VerticalAlignment="Top" Height="35" Width="138" Click="Exit_Click" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="952,48,0,0" TextWrapping="Wrap" Text="Поиск:" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.532,0.66"/>
+        <TextBox x:Name="SearchBox" Margin="952,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="33" TextChanged="SearchBox_TextChanged" HorizontalAlignment="Left" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="952,123,0,0" TextWrapping="Wrap" Text="Сортировка:" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="SortBox" Margin="952,149,0,0" VerticalAlignment="Top" Height="31" SelectionChanged="SortBox_SelectionChanged" HorizontalAlignment="Left" Width="120">
+            <ComboBoxItem Content="Название" Tag="Name"/>
+            <ComboBoxItem Content="Цена" Tag="Price"/>
+            <ComboBoxItem Content="Страна" Tag="Country"/>
+            <ComboBoxItem Content="Описание" Tag="Description"/>
+        </ComboBox>
     </Grid>
 </Window>
     
